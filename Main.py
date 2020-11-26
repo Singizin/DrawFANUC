@@ -1,18 +1,22 @@
 import GEN_LS
 
+# размер "клетки"
 step_size = 10
+# точка начала желаемая, может быть смещена
+start_point = [305, 160]
+# Границы рабочей области, мм
 x_max = 420
 x_min = 210
-
 y_max = 310
 y_min = 20
+# Высота
 z_draw = -50
 
 paper_width = (x_max - x_min) / step_size
 paper_height = (y_max - y_min) / step_size
-
 print(paper_width, paper_height)
 
+filename = 'NEW_PROG.LS'
 turtle = [1, 1, 4, 4, 4, 4, 1, 3, 3, 1, 3,
           1, 1, 1, 1, 4, 1, 4, 4, 4, 2, 4,
           2, 3, 2, 2, 2, 2, 4, 2, 3, 2,
@@ -28,15 +32,15 @@ deer = [3, 3, 1, 1, 3, 1, 3, 3, 1, 4, 1, 3, 1, 4,
         3, 3, 2, 4, 4, 4, 4, 4, 4, 2, 3, 3, 2, 3,
         3, 2, 2, 2, 4, 4, 2, 4, 4, 2, 3, 3, 3, 3,
         3, 2, 3, 3, 3, 3, 2]
+square = [1, 3, 2, 4]
 
-'''
-1 - x+
-2 - x-
-3 - y+
-4 - y-
-position[0] - x
-position[1] - y
-'''
+
+# 1 - x+
+# 2 - x-
+# 3 - y+
+# 4 - y-
+# position[0] - x
+# position[1] - y
 
 
 class Picture:
@@ -115,9 +119,9 @@ def gen_points(img):
     return points
 
 
-image2 = Picture([220, 200], deer)
+image2 = Picture(start_point=start_point, path=ship)
 
 print(gen_points(image2))
-GEN_LS.make_file(gen_points(image2))
+# GEN_LS.make_file(gen_points(image2), filename=filename)
 
 print(image2.size())

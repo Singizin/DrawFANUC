@@ -1,6 +1,6 @@
 def first(f, how_much):
     for i in range(1, how_much+1, 1):
-        print(i)
+        # print(i)
         f.write('{num}:L P[{num}] 50mm/sec FINE    ;\n'.format(num=str(i)))
     f.write('/POS\n')
 
@@ -16,8 +16,8 @@ def write_point(f, num, x, y):
     f.write(result)
 
 
-def make_file(points):
-    f = open('NEW_PICTURE.LS', 'a')
+def make_file(points, filename):
+    f = open(f'{filename}', 'w')
     first(f, len(points))
     counter = 1
     for i in points:
